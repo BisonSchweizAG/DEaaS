@@ -1,0 +1,6 @@
+yarn.lock -diff
+
+*.ts text
+*.html text
+*.scss text
+*.js text

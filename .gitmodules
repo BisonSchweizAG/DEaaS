@@ -1,0 +1,3 @@
+[submodule "client"]
+	path = client
+	url = ssh://git@gitlab.bisdevdom.ch:8022/biskin-kit/angular-starter.git
