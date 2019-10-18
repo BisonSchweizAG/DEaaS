@@ -30,6 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
-/server/src/main/resources/static/de/**
-/server/src/main/resources/static/fr/**
-/server/src/main/resources/static/it/**
+/src/main/resources/static/de/
+/src/main/resources/static/fr/
+/src/main/resources/static/it/
