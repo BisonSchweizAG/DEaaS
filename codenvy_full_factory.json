@@ -1,7 +1,7 @@
 {
-  "url_to_share": "https://codenvy.io/f?name=oti-server&user=ohumbel"
+  "url_to_share": "https://codenvy.io/f?name=Full-DEaaS&user=ohumbel"
   "v": "4.0",
-  "name": "oti-server",
+  "name": "Full-DEaaS",
   "workspace": {
     "environments": {
       "default": {
@@ -43,20 +43,27 @@
         "mixins": []
       }
     ],
-    "name": "oti-deaas-team_1",
+    "name": "full",
     "commands": [
       {
-        "commandLine": "mvn clean install -f ${current.project.path}",
-        "name": "build",
+        "commandLine": "cd DEaaS/client && sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs && npm install",
+        "name": "setupClient",
         "attributes": {
-          "goal": "Build",
           "previewUrl": ""
         },
-        "type": "mvn"
+        "type": "custom"
       },
       {
-        "commandLine": "cd DEaaS && git checkout server-only && ./gradlew bootRun",
-        "name": "runServer",
+        "commandLine": "cd DEaaS/server && ./gradlew bootRun",
+        "name": "startServer",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd DEaaS/client && npm run serve",
+        "name": "startClient",
         "attributes": {
           "previewUrl": ""
         },
@@ -65,13 +72,13 @@
     ],
     "links": []
   },
-  "id": "factorycb9shvcm4ycibquf",
+  "id": "factoryngp3j7myohxl5zet",
   "ide": {
     "onProjectsLoaded": {
       "actions": [
         {
           "properties": {
-            "name": "runServer"
+            "name": "setupClient"
           },
           "id": "runCommand"
         }
@@ -81,7 +88,7 @@
   "creator": {
     "name": "ohumbel",
     "email": "ohumbel@gmail.com",
-    "created": 1571401804670,
+    "created": 1571422820671,
     "userId": "useruih4g9a1moni26d3"
   }
 }
