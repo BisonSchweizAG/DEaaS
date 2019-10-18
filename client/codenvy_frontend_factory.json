@@ -1,6 +1,6 @@
 {
   "v": "4.0",
-  "name": "DEaaS-Server-Factory",
+  "name": "FrontendDEaaS",
   "workspace": {
     "environments": {
       "default": {
@@ -19,9 +19,8 @@
           }
         },
         "recipe": {
-          "type": "dockerfile",
-          "content": "FROM registry.centos.org/che-stacks/spring-boot\nRUN sudo mkdir -p /home/user/.ssh; sudo touch /home/user/.ssh/authorized_keys; sudo chown -R user:user /home/user; sudo chmod 0700 /home/user/.ssh; sudo chmod 0700 /home/user/.ssh/authorized_keys; sudo chmod 0700 /home/user\n",
-          "contentType": "text/x-dockerfile"
+          "location": "eclipse/ubuntu_jdk8",
+          "type": "dockerimage"
         }
       }
     },
@@ -29,54 +28,58 @@
     "projects": [
       {
         "links": [],
-        "name": "DEaaS-Server",
-        "attributes": {
-          "contribute_to_branch": [
-            "master"
-          ]
-        },
+        "name": "DEaaS",
+        "attributes": {},
         "type": "blank",
         "source": {
-          "location": "https://github.com/BisonSchweizAG/DEaaS.git",
+          "location": "https://github.com/BisonSchweizAG/DEaaS",
           "type": "git",
           "parameters": {}
         },
-        "path": "/DEaaS-Server",
+        "path": "/DEaaS",
         "description": "",
         "problems": [],
-        "mixins": [
-          "pullrequest"
-        ]
+        "mixins": []
       }
     ],
-    "name": "DEaaS-Server",
+    "name": "FrontendDEaaS",
     "commands": [
       {
-        "commandLine": "scl enable rh-maven33 'mvn clean install -f ${current.project.path}'",
-        "name": "build",
+        "commandLine": "cd DEaaS && sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs && git checkout client-only && npm install",
+        "name": "setup",
         "attributes": {
-          "goal": "Build",
           "previewUrl": ""
         },
         "type": "custom"
       },
       {
-        "commandLine": "java -jar ${current.project.path}/target/*.jar",
-        "name": "run",
+        "commandLine": "cd DEaaS && npm run serve",
+        "name": "start",
         "attributes": {
-          "goal": "Run",
-          "previewUrl": "http://${server.port.8080}"
+          "previewUrl": "http://${server.port.4200}"
         },
         "type": "custom"
       }
     ],
     "links": []
   },
-  "id": "factory9j64c3iq8f192oo7",
+  "id": "factoryuq2col1dls0xtrzv",
+  "ide": {
+    "onProjectsLoaded": {
+      "actions": [
+        {
+          "properties": {
+            "name": "setup"
+          },
+          "id": "runCommand"
+        }
+      ]
+    }
+  },
   "creator": {
-    "name": "alexanders",
-    "email": "alexander.shkodra@gmail.com",
-    "created": 1571400944703,
-    "userId": "usert5ata9qz4bvijvyk"
+    "name": "thomasbruecker",
+    "email": "thomas_bruecker@hotmail.com",
+    "created": 1571399772644,
+    "userId": "user2j6vyqofdx0foxp7"
   }
 }
