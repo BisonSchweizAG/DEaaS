@@ -3,9 +3,7 @@ buildscript {
         springBootVersion = '2.1.8.RELEASE'
     }
     repositories {
-        maven {
-            url "${artifactory_gradle_cache}"
-        }
+       jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -27,17 +25,11 @@ configurations {
 	}
 }
 
+
 repositories {
-    maven {
-        url "${artifactory_gradle_cache}"
-    }
-    maven {
-        url "${artifactory_libs_snapshot_local}"
-    }
-    maven {
-        url "${artifactory_libs_local_bison_process}"
-    }
+   jcenter()
 }
+
 
 dependencies {
     compile 'org.tuckey:urlrewritefilter:4.0.3'
