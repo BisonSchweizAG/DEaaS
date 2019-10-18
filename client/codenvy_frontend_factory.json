@@ -1,0 +1,82 @@
+{
+  "v": "4.0",
+  "name": "DEaaS-Server-Factory",
+  "workspace": {
+    "environments": {
+      "default": {
+        "machines": {
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.exec",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ssh"
+            ]
+          }
+        },
+        "recipe": {
+          "type": "dockerfile",
+          "content": "FROM registry.centos.org/che-stacks/spring-boot\nRUN sudo mkdir -p /home/user/.ssh; sudo touch /home/user/.ssh/authorized_keys; sudo chown -R user:user /home/user; sudo chmod 0700 /home/user/.ssh; sudo chmod 0700 /home/user/.ssh/authorized_keys; sudo chmod 0700 /home/user\n",
+          "contentType": "text/x-dockerfile"
+        }
+      }
+    },
+    "defaultEnv": "default",
+    "projects": [
+      {
+        "links": [],
+        "name": "DEaaS-Server",
+        "attributes": {
+          "contribute_to_branch": [
+            "master"
+          ]
+        },
+        "type": "blank",
+        "source": {
+          "location": "https://github.com/BisonSchweizAG/DEaaS.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "path": "/DEaaS-Server",
+        "description": "",
+        "problems": [],
+        "mixins": [
+          "pullrequest"
+        ]
+      }
+    ],
+    "name": "DEaaS-Server",
+    "commands": [
+      {
+        "commandLine": "scl enable rh-maven33 'mvn clean install -f ${current.project.path}'",
+        "name": "build",
+        "attributes": {
+          "goal": "Build",
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "java -jar ${current.project.path}/target/*.jar",
+        "name": "run",
+        "attributes": {
+          "goal": "Run",
+          "previewUrl": "http://${server.port.8080}"
+        },
+        "type": "custom"
+      }
+    ],
+    "links": []
+  },
+  "id": "factory9j64c3iq8f192oo7",
+  "creator": {
+    "name": "alexanders",
+    "email": "alexander.shkodra@gmail.com",
+    "created": 1571400944703,
+    "userId": "usert5ata9qz4bvijvyk"
+  }
+}
