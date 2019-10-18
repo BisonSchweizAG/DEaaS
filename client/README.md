@@ -1,125 +1,27 @@
-# Angular Starter
+# DEaaS
 
-> An Angular starter kit featuring [Angular 8](https://angular.io), [BiSkinKit](http://biskin-kit.pages.bisdevdom.ch/biskin-kit/?path=/story/welcome--to-biskinkit-storybook), [ag-Grid](https://www.ag-grid.com/)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
-This seed repo serves as an Angular starter for anyone looking to get up and running with Angular and TypeScript fast. We're also using Protractor for our end-to-end story and Jest for our unit tests.
+## Development server
 
-- Best practices in file and application organization for Angular.
-- Pre-configured Linters and Formatters with @bison/global-auto-configurations.
-- Bison Libraries: BiSkinKit, ag-Grid.
-- Testing Angular code with Jest.
-- End-to-end Angular app testing using Protractor.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Quick start
+## Code scaffolding
 
-**Make sure you have Node version >= 8.0 and (NPM >= 5 or [Yarn](https://yarnpkg.com) )**
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-> Clone/Download the repo
+## Build
 
-```bash
-# clone our repo
-# --depth 1 removes all but one .git commit history
-git clone --depth 1 https://gitlab.bisdevdom.ch/biskin-kit/angular-starter.git
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-# change directory to our repo
-cd angular-starter
+## Running unit tests
 
-# install the repo with npm
-npm install
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-# start the server
-npm start
-```
+## Running end-to-end tests
 
-go to [http://0.0.0.0:4200](http://0.0.0.0:4200/webpack-dev-server/) or [http://localhost:4200](http://localhost:4200/webpack-dev-server/) in your browser
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-# Table of Contents
+## Further help
 
-- [File Structure](#file-structure)
-- [Getting Started](#getting-started)
-  - [Dependencies](#dependencies)
-  - [Installing](#installing)
-  - [Running the app](#running-the-app)
-
-## File Structure
-
-```
-angular-starter/
- ├──src/                           * our source files that will be compiled to javascript
- |   ├──main.browser.ts            * our entry file for our browser environment
- │   │
- |   ├──index.html                 * Index.html: where we generate our index page
- │   │
- |   ├──polyfills.ts               * our polyfills file
- │   │
- │   ├──app/                       * WebApp: folder
- │   │   ├──app.component.spec.ts  * a simple test of components in app.component.ts
- │   │   └──app.component.ts       * a simple version of our App component components
- │   │
- │   └──assets/                    * static assets are served here
- │       └──robots.txt             * for search engines to crawl your website
- │
- ├──tsconfig.json                  * typescript config used outside ng
- ├──tsconfig.app.json              * config that ng uses for typescript
- └──package.json                   * what npm uses to manage its dependencies
-
-```
-
-# Getting Started
-
-## Dependencies
-
-What you need to run this app:
-
-- `node` and `npm`
-- Ensure you're running the latest versions Node `v8.x.x`+ (or `v9.x.x`) and NPM `5.x.x`+
-
-## Installing
-
-- `fork` this repo
-- `clone` your fork
-- `npm install` to install all dependencies or `yarn`
-- `npm run start` to start the dev server
-
-## Running the app
-
-After you have installed all dependencies you can now run the app. Run `npm run start` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://0.0.0.0:4200`.
-
-## Other commands
-
-### build files
-
-```bash
-# production
-npm run build
-```
-
-### lint files
-
-```bash
-npm run lint
-```
-
-### run unit tests
-
-```bash
-npm run test
-```
-
-### run end-to-end tests
-
-```bash
-# update Webdriver (optional, done automatically by postinstall script)
-npm run webdriver:update
-
-# this will start a test server and launch Protractor
-npm run e2e
-```
-
-# Frequently asked questions
-
-# Support, Questions, or Feedback
-
-> Contact us anytime for anything about this repo. Pull request are welcome.
-
-- [Jabber: Mobile- & Webentwicklung]()
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
