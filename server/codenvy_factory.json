@@ -1,0 +1,86 @@
+{
+  "v": "4.0",
+  "name": "oti-server",
+  "workspace": {
+    "environments": {
+      "default": {
+        "machines": {
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.ssh",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
+            ]
+          }
+        },
+        "recipe": {
+          "location": "eclipse/ubuntu_jdk8",
+          "type": "dockerimage"
+        }
+      }
+    },
+    "defaultEnv": "default",
+    "projects": [
+      {
+        "links": [],
+        "name": "DEaaS",
+        "attributes": {},
+        "type": "blank",
+        "source": {
+          "location": "https://github.com/BisonSchweizAG/DEaaS",
+          "type": "git",
+          "parameters": {}
+        },
+        "path": "/DEaaS",
+        "description": "",
+        "problems": [],
+        "mixins": []
+      }
+    ],
+    "name": "oti-deaas-team_1",
+    "commands": [
+      {
+        "commandLine": "mvn clean install -f ${current.project.path}",
+        "name": "build",
+        "attributes": {
+          "goal": "Build",
+          "previewUrl": ""
+        },
+        "type": "mvn"
+      },
+      {
+        "commandLine": "cd DEaaS && git checkout server-only && ./gradlew bootRun",
+        "name": "runServer",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      }
+    ],
+    "links": []
+  },
+  "id": "factorycb9shvcm4ycibquf",
+  "ide": {
+    "onProjectsLoaded": {
+      "actions": [
+        {
+          "properties": {
+            "name": "runServer"
+          },
+          "id": "runCommand"
+        }
+      ]
+    }
+  },
+  "creator": {
+    "name": "ohumbel",
+    "email": "ohumbel@gmail.com",
+    "created": 1571401804670,
+    "userId": "useruih4g9a1moni26d3"
+  }
+}
