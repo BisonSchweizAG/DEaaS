@@ -1,0 +1,22 @@
+metadata:
+  name: wksp-xl9y
+projects:
+  - name: DEaaS
+    source:
+      location: 'https://github.com/BisonSchweizAG/DEaaS.git'
+      type: git
+      branch: client-only
+attributes:
+  persistVolumes: 'false'
+components:
+  - id: che-incubator/typescript/latest
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: angular
+        port: 4200
+    memoryLimit: 1Gi
+    type: dockerimage
+    alias: nodejs
+    image: 'quay.io/eclipse/che-nodejs10-community:nightly'
+apiVersion: 1.0.0
