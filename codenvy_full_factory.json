@@ -1,21 +1,26 @@
 {
-  "url_to_share": "https://codenvy.io/f?name=Full-DEaaS&user=ohumbel",
   "v": "4.0",
-  "name": "Full-DEaaS",
+  "name": "Fullstack-Factory",
   "workspace": {
     "environments": {
       "default": {
         "machines": {
           "dev-machine": {
             "attributes": {
-              "memoryLimitBytes": "2147483648"
+              "memoryLimitBytes": "3221225472"
             },
-            "servers": {},
+            "servers": {
+              "Angular": {
+                "port": "4200",
+                "properties": {},
+                "protocol": "http"
+              }
+            },
             "agents": [
-              "org.eclipse.che.ssh",
-              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.exec",
               "org.eclipse.che.terminal",
-              "org.eclipse.che.exec"
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ssh"
             ]
           }
         },
@@ -33,7 +38,7 @@
         "attributes": {},
         "type": "blank",
         "source": {
-          "location": "https://github.com/BisonSchweizAG/DEaaS",
+          "location": "https://github.com/BisonSchweizAG/DEaaS.git",
           "type": "git",
           "parameters": {}
         },
@@ -43,27 +48,27 @@
         "mixins": []
       }
     ],
-    "name": "full",
+    "name": "DEaaS-Fullstack_2_1",
     "commands": [
-      {
-        "commandLine": "cd DEaaS/client && sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs && npm install",
-        "name": "setupClient",
-        "attributes": {
-          "previewUrl": ""
-        },
-        "type": "custom"
-      },
-      {
-        "commandLine": "cd DEaaS/server && ./gradlew bootRun",
-        "name": "startServer",
-        "attributes": {
-          "previewUrl": ""
-        },
-        "type": "custom"
-      },
       {
         "commandLine": "cd DEaaS/client && npm run serve",
         "name": "startClient",
+        "attributes": {
+          "previewUrl": "http://${server.port.4200}"
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd DEaaS/client && sudo apt-get install curl && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install nodejs &&  npm install",
+        "name": "runClient",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd DEaaS/server &&  ./gradlew bootRun",
+        "name": "runServer",
         "attributes": {
           "previewUrl": ""
         },
@@ -72,13 +77,19 @@
     ],
     "links": []
   },
-  "id": "factoryngp3j7myohxl5zet",
+  "id": "factory6odxbp5bms89dz0z",
   "ide": {
     "onProjectsLoaded": {
       "actions": [
         {
           "properties": {
-            "name": "setupClient"
+            "name": "runServer"
+          },
+          "id": "runCommand"
+        },
+        {
+          "properties": {
+            "name": "runClient"
           },
           "id": "runCommand"
         }
@@ -86,9 +97,9 @@
     }
   },
   "creator": {
-    "name": "ohumbel",
-    "email": "ohumbel@gmail.com",
-    "created": 1571422820671,
-    "userId": "useruih4g9a1moni26d3"
+    "name": "alexanders",
+    "email": "alexander.shkodra@gmail.com",
+    "created": 1571421075039,
+    "userId": "usert5ata9qz4bvijvyk"
   }
 }
